@@ -1,6 +1,8 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import { useEffect, useState } from "react";
-import Mexp from "math-expression-evaluator";
+import { create, all } from "mathjs";
+
+const math = create(all);
 
 const repairExpression = (expression: string) => {
   let result = expression;
@@ -34,9 +36,11 @@ export default function BetterCalculatorCommand() {
 
     try {
       const actualExpression = repairExpression(expression);
-      const result = new Mexp().eval(actualExpression, [], []);
+      const result = math.evaluate(actualExpression);
 
-      setResult(result.toString());
+      if (typeof result === "number") {
+        setResult(result.toString());
+      }
     } catch (_) {
       return;
     }

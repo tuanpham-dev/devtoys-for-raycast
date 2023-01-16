@@ -108,7 +108,7 @@
   "dependencies": {
     "@raycast/api": "^1.45.2",
     "html-escaper": "^3.0.3",
-    "math-expression-evaluator": "^2.0.0",
+    "mathjs": "^11.5.0",
     "text-case": "^1.0.9"
   },
   "devDependencies": {
